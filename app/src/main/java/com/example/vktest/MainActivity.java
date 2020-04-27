@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ViewContract {
 
     VKpresenter presenter = new VKpresenter();
 
@@ -32,13 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void msg(final String val) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ((TextView) findViewById(R.id.lblPostText)).append(val +"\r\n");
 
-            }
-        });
+                ((TextView) findViewById(R.id.lblPostText)).append(val +"\r\n");
     }
 
     public void hideProgressBar(){
@@ -51,5 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void setImage(Bitmap img){
         ((ImageView) findViewById(R.id.imageView)).setImageBitmap(img);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
     }
 }

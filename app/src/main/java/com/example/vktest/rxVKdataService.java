@@ -21,6 +21,8 @@ public class rxVKdataService {
 
     private VKapi vkapi;
 
+
+    //let's init hte retrofit
     rxVKdataService(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Const.API_URL)
@@ -31,11 +33,12 @@ public class rxVKdataService {
     }
 
 
-
+    //let's get the body of the json request
     Observable<Response<VKjson>> getResponseBody(){
-        return vkapi.getRxJsonData1(Const.VK_OWNER_ID, 3, Const.VK_TOKEN, Const.VK_API_VERSION);
+        return vkapi.getRxJsonData(Const.VK_OWNER_ID, 3, Const.VK_TOKEN, Const.VK_API_VERSION);
     }
 
+    //let's get the body of request of the picture
     Observable<ResponseBody> getRxImage(String url){
         return vkapi.getRxImage(url);
     }

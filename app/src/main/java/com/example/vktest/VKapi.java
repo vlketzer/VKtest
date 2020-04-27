@@ -16,7 +16,7 @@ public interface VKapi {
 
 
     @GET("wall.get")
-    Observable<Response<VKjson>> getRxJsonData1(@Query("owner_id") int ownerID, @Query("count") int postsCount, @Query("access_token") String token, @Query("v") String APIversion );
+    Observable<Response<VKjson>> getRxJsonData(@Query("owner_id") int ownerID, @Query("count") int postsCount, @Query("access_token") String token, @Query("v") String APIversion );
 
     @GET
     Observable<ResponseBody> getRxImage(@Url String imageURL);
