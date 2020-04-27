@@ -3,14 +3,7 @@ package com.example.vktest.VKmodel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/*
-"sizes": [{
-"type": "m",
-"url": "https://pp.userap...2bf/fCCufMSF7tQ.jpg",
-"width": 130,
-"height": 93
-}
-*/
+
 
 public class VKPhotoSizes {
 

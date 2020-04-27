@@ -1,13 +1,7 @@
 package com.example.vktest;
 
-import com.example.vktest.VKmodel.VKItems;
-import com.example.vktest.VKmodel.VKResponse;
-import com.example.vktest.VKmodel.VKerror;
 import com.example.vktest.VKmodel.VKjson;
-import com.example.vktest.VKmodel.VKsize;
-import com.example.vktest.Const;
 
-import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -35,7 +29,7 @@ public class rxVKdataService {
 
     //let's get the body of the json request
     Observable<Response<VKjson>> getResponseBody(){
-        return vkapi.getRxJsonData(Const.VK_OWNER_ID, 3, Const.VK_TOKEN, Const.VK_API_VERSION);
+        return vkapi.getRxJsonData(Const.VK_OWNER_ID, Const.VK_POSTS_COUNT, Const.VK_TOKEN, Const.VK_API_VERSION);
     }
 
     //let's get the body of request of the picture

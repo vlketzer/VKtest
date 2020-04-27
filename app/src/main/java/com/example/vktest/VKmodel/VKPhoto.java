@@ -5,26 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/*
-"id": 456240250,
-"album_id": -7,
-"owner_id": -857049,
-"user_id": 100,
-"sizes": [{
-"type": "m",
-"url": "https://pp.userap...2bf/fCCufMSF7tQ.jpg",
-"width": 130,
-"height": 93
-},
-...
-}],
-"text": "",
-"date": 1556719320,
-"post_id": 5023,
-"access_key": "839fec412e375c4caf"
-}
-}],
- */
+
 
 public class VKPhoto {
 

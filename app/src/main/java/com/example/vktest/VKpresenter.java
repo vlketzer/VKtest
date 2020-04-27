@@ -5,16 +5,8 @@ package com.example.vktest;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.annotation.MainThread;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 
-import com.example.vktest.VKmodel.VKAttachments;
 import com.example.vktest.VKmodel.VKItems;
-import com.example.vktest.VKmodel.VKPhoto;
-import com.example.vktest.VKmodel.VKResponse;
-import com.example.vktest.VKmodel.VKjson;
 import com.example.vktest.VKmodel.VKsize;
 
 
@@ -23,10 +15,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 
 
 
