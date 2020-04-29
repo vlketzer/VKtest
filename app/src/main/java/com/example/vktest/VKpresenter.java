@@ -40,7 +40,7 @@ public class VKpresenter {
 
 
             //start observable request to vk
-            Disposable dispose = new rxVKdataService().getResponseBody().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(vKjsonResponse -> {
+            Disposable dispose = new rxVKdataService().getResponseBody().subscribeOn(Schedulers.io()).subscribe(vKjsonResponse -> {
                         if (vKjsonResponse.body() != null && !vKjsonResponse.body().equals(null)) {
                             //catch successed answer with an internal server error (bad request)
                             if (vKjsonResponse.body().getError() != null && !vKjsonResponse.body().getError().equals(null)) {
@@ -69,11 +69,12 @@ public class VKpresenter {
                                                             Observable<Integer> maxWidth = MathObservable.max(Observable.just(takenSize).map(VKsize::getWidth));
                                                             maxWidth.subscribe(gettedMaxWidth -> {
                                                                 //get url of the picture with a max width
-                                                                Observable<String> url = Observable.just(takenSize).filter(sizes -> sizes.getWidth() == gettedMaxWidth).map(VKsize::getUrl);
+                                                           //     Observable<String> url = Observable.just(takenSize).filter(sizes -> sizes.getWidth().equals(gettedMaxWidth)).map(VKsize::getUrl);
+                                                                Observable<String> url = Observable.just(takenSize).filter(sizes -> sizes.getType().equals("r")).map(VKsize::getUrl);
                                                                 url.map(picUrl -> {
 
                                                                     //start request based on getted url
-                                                                    new rxVKdataService().getRxImage(picUrl).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(image -> {
+                                                                    new rxVKdataService().getRxImage(picUrl).observeOn(AndroidSchedulers.mainThread()).subscribe(image -> {
                                                                         //load getted image to bitmap and set text to according label on the main view
                                                                         Bitmap bmp = BitmapFactory.decodeStream(image.byteStream());
                                                                         if (item.getDate().equals(gettedLatestItemDate)) {
@@ -84,20 +85,20 @@ public class VKpresenter {
                                                                         }
                                                                     });
                                                                     return picUrl;
-                                                                }).subscribe();
+                                                                }).subscribeOn(Schedulers.io()).subscribe();
                                                             });
                                                             return maxWidth;
-                                                        }).subscribe();
+                                                        }).subscribeOn(Schedulers.io()).subscribe();
 
                                                 }
-                                                else
+                                          //      else
 
                                                     //show post text without any pictures
-                                                    uView.showPostText(item.getText());
+                                                 //   uView.showPostText(item.getText());
 
                                             });
                                             return item;
-                                        }).subscribe();
+                                        }).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe();
                             }
                         }
                     });
