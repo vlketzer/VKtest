@@ -68,7 +68,7 @@ public class VKpresenter {
                                                             //get the max width of each item
                                                             Observable<Integer> maxWidth = MathObservable.max(Observable.just(takenSize).map(VKsize::getWidth));
                                                             maxWidth.subscribe(gettedMaxWidth -> {
-                                                                //get url of the picture with a max width
+                                                                //get url of the picture with a required type
                                                            //     Observable<String> url = Observable.just(takenSize).filter(sizes -> sizes.getWidth().equals(gettedMaxWidth)).map(VKsize::getUrl);
                                                                 Observable<String> url = Observable.just(takenSize).filter(sizes -> sizes.getType().equals("r")).map(VKsize::getUrl);
                                                                 url.map(picUrl -> {
